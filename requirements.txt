@@ -1,0 +1,5 @@
+onnx
+torch
+torchvision
+tensorflow
+protobuf==3.20.1
