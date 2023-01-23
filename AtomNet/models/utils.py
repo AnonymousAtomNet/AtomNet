@@ -2,7 +2,6 @@ import os
 import torch
 from torch.nn import Conv2d, Linear # noqa
 from decimal import Decimal
-from tools.query import query
 
 
 def export_onnx_by_module(module_table):

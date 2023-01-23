@@ -3,7 +3,7 @@ from collections import OrderedDict
 import torch.nn as nn
 import torch.nn.functional as F
 
-from models.activation import build_activation
+from AtomNet.models.activation import build_activation
 
 
 def get_same_padding(kernel_size):

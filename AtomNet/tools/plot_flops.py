@@ -2,7 +2,6 @@ import numpy as np
 import torch
 import torch.nn as nn
 from matplotlib import pyplot as plt
-from fvcore.nn import FlopCountAnalysis
 
 def get_colors(type_dict):
     colors = []

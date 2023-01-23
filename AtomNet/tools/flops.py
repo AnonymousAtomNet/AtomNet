@@ -5,8 +5,6 @@ import torch.nn as nn
 import numpy as np
 import matplotlib.pyplot as plt
 
-from tools.query import query
-from fvcore.nn import FlopCountAnalysis, parameter_count
 
 
 def get_flops(cls_model, input_size):

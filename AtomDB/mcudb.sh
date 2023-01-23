@@ -51,7 +51,7 @@ function main() {
         n)
             number=${OPTARG}
             ;;
-        :) # 选项内容为空
+        :) # option is None
             # set default
             case ${OPTARG} in
             b)
@@ -72,8 +72,8 @@ function main() {
                 ;;
             esac
             ;;
-        ?) # 无匹配的参数， 提示用户不合法
-            echo "Invaild option: -$OPTARG"
+        ?) # invalid option
+            echo "Invalid option: -$OPTARG"
             Usage
             exit 2
             ;;

@@ -1,20 +1,18 @@
 from decimal import Decimal
-from turtle import pd
 import torch.nn as nn
 from torch.nn import Conv2d, Linear
 import torch.nn.functional as F
 from collections import OrderedDict
 
-from models.utils import export_onnx_by_module, merge_block, merge_stage
-from models.initializer import initialize_from_cfg
-from models.normalize import build_norm_layer
-from models.normal_blocks import get_same_padding, \
+from AtomNet.models.utils import export_onnx_by_module, merge_block, merge_stage
+from AtomNet.models.initializer import initialize_from_cfg
+from AtomNet.models.normalize import build_norm_layer
+from AtomNet.models.normal_blocks import get_same_padding, \
     build_activation, SEBlock, get_same_length, ConvBlock, \
     MBConvBlock, MBConvNextBlock, RegBottleneckBlock
 
-from tools.query import query_model
-from tools.flops import get_conv_and_linear_module_list
-from tools.plot_flops import plot_model
+from AtomNet.tools.flops import get_conv_and_linear_module_list
+from AtomNet.tools.plot_flops import plot_model
 
 
 __all__ = ['mobile']
@@ -360,6 +358,7 @@ class BigNAS_MobileOne(nn.Module):
         if self.task == 'classification':
             if not self.pool_first:
                 x = F.avg_pool2d(x, kernel_size=int(x.size(2)))
+                # x = F.adaptive_avg_pool2d(x, 1)
                 x = x.view(x.size(0), -1)
             x = self.classifier(x)
             return x
@@ -443,7 +442,6 @@ class BigNAS_MobileOne(nn.Module):
         module_list = self.get_module_list(input)
         time = query_model(module_list)
         return time
-    
 
 
 def mobile(**kwargs):

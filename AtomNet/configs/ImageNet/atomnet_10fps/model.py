@@ -12,4 +12,4 @@ if __name__ == "__main__":
         'expand_ratio': [1, 1, 1, 1, 3, 3]
     }
     input_resolution = 80
-    atomnet_10fps = atomnet_base(config)
+    atomnet_10fps = atomnet_base(**config)

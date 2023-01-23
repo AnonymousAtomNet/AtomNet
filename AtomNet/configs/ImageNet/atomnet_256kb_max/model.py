@@ -12,4 +12,4 @@ if __name__ == "__main__":
         'expand_ratio': [1, 1, 1, 3, 3, 6]
     }
     input_resolution = 224
-    atomnet_256kb_max = atomnet_base(config)
+    atomnet_256kb_max = atomnet_base(**config)
